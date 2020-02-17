@@ -24,18 +24,39 @@ def selection_sort( arr ):
 
 # TO-DO:  implement the Bubble Sort function below
 def bubble_sort( arr ):
-    count = 0
-    has_switched = count
-    for i in range(0, len(arr) - 1):
-        if arr[i] > arr[i + 1]:
-            temp = arr[i]
-            arr[i] = arr[i + 1]
-            arr[i + 1] = temp
-            count += 1
-    if count == has_switched:
+    ar_sort = False
+    if len(arr) == 0:
         return arr
-    else: 
-        return bubble_sort(arr)
+    while ar_sort == False:
+        count = 0
+        for i in range(0, len(arr) - 1):
+            if arr[i] > arr[i + 1]:
+                temp = arr[i]
+                arr[i] = arr[i + 1]
+                arr[i + 1] = temp
+                count += 1
+            if count == 0 and i == len(arr) - 2:
+                ar_sort = True
+            elif count > 0 and i == len(arr) - 2:
+                count -= count
+            if ar_sort == True:
+                return arr
+                
+
+# Recursive
+# def bubble_sort( arr ):
+#     count = 0
+#     has_switched = count
+#     for i in range(0, len(arr) - 1):
+#         if arr[i] > arr[i + 1]:
+#             temp = arr[i]
+#             arr[i] = arr[i + 1]
+#             arr[i + 1] = temp
+#             count += 1
+#     if count == has_switched:
+#         return arr
+#     else: 
+#         return bubble_sort(arr)
 
 # STRETCH: implement the Count Sort function below
 def count_sort( arr, maximum=-1 ):
