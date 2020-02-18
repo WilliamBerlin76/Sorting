@@ -3,9 +3,8 @@ def merge( arrA, arrB ):
     elements = len( arrA ) + len( arrB )
     merged_arr = [0] * elements
     # TO-DO
-    i = 0
-    j = 0
-    k = 0
+    i, j, k = 0, 0, 0
+
     while i < len(arrA) and j < len(arrB):
         # print(arrA, arrB)
         if arrA[i] < arrB[j]:
@@ -25,7 +24,7 @@ def merge( arrA, arrB ):
         j += 1
         k += 1
     return merged_arr
-# print(merge([1,2,3], [4,5,6]))
+
 # TO-DO: implement the Merge Sort function below USING RECURSION
 def merge_sort( arr ):
     # TO-DO
@@ -33,9 +32,7 @@ def merge_sort( arr ):
     spl_point = len(arr)//2
     if len(arr) > 1:
         left = merge_sort(arr[:spl_point])
-        # print(left, 'left')
         right = merge_sort(arr[spl_point:])
-        # print(right, 'right')
         arr = merge(left, right)
         
     return arr
