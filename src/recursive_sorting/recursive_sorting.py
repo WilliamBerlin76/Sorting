@@ -3,22 +3,44 @@ def merge( arrA, arrB ):
     elements = len( arrA ) + len( arrB )
     merged_arr = [0] * elements
     # TO-DO
-    m = len(merged_arr) // 2
-    for i in range(len(merged_arr)):
-        if i < m:
-            merged_arr[i] = arrA[i]
-        else:
-            merged_arr[i] = arrB[i - m]
+    i = 0
+    j = 0
+    k = 0
+    while i < len(arrA) and j < len(arrB):
+        # print(arrA, arrB)
+        if arrA[i] < arrB[j]:
+            merged_arr[k] = arrA[i]
+            i += 1
+            k += 1
+        elif arrA[i] > arrB[j]:
+            merged_arr[k] = arrB[j]
+            k += 1
+            j += 1
+    while i < len(arrA):
+        merged_arr[k] = arrA[i]
+        i += 1
+        k += 1
+    while j < len(arrB):
+        merged_arr[k] = arrB[j]
+        j += 1
+        k += 1
     return merged_arr
-
-print(merge([1,2,3], [7,5,6]))
+# print(merge([1,2,3], [4,5,6]))
 # TO-DO: implement the Merge Sort function below USING RECURSION
 def merge_sort( arr ):
     # TO-DO
-
+    # divide array by 2 until left with sub arrays of len 1
+    spl_point = len(arr)//2
+    if len(arr) > 1:
+        left = merge_sort(arr[:spl_point])
+        # print(left, 'left')
+        right = merge_sort(arr[spl_point:])
+        # print(right, 'right')
+        arr = merge(left, right)
+        
     return arr
-
-
+    
+# print(merge_sort([1, 5, 8, 4, 2, 9, 6, 0, 3, 7]))
 # STRETCH: implement an in-place merge sort algorithm
 def merge_in_place(arr, start, mid, end):
     # TO-DO
